@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <string.h>
 
 /* ----- Data Structures ----- */
 
@@ -38,7 +39,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern stack_t **head;
+
 /* ----- Self-Functions ----- */
+
+/* main.c */
+void checkInstructions(char *fileName);
 
 /* errors.c */
 void throwCustomError(char *error, ...);
@@ -54,5 +60,18 @@ void popOpCode(stack_t **stack, unsigned int line_number);
 void swapOpCode(stack_t **stack, unsigned int line_number);
 void addOpCode(stack_t **stack, unsigned int line_number);
 void nopOpCode(stack_t **stack, unsigned int line_number);
+
+/* stack_utils.c */
+void addStack(unsigned int n);
+stack_t *getStack(unsigned int position);
+void clearStack();
+
+/* instruction_utils.c */
+unsigned int ex_instruction(char *opCode, unsigned int line, int val);
+
+/* string_utils.c */
+char **split_str(char *str, const char *delim);
+int str_count_words(char *s, const char *delim);
+void free_array(char **arr);
 
 #endif

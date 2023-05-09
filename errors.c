@@ -19,6 +19,4 @@ void throwCustomError(char *error, ...)
 	vfprintf(stderr, error, args);
 
 	va_end(args);
-
-	free(error);
 }
