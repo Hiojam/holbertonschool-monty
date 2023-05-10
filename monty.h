@@ -39,12 +39,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t **head;
 
 /* ----- Self-Functions ----- */
 
 /* main.c */
-void checkInstructions(char *fileName);
+void checkInstructions(char *fileName, stack_t **s);
 
 /* errors.c */
 void throwCustomError(char *error, ...);
@@ -62,12 +61,11 @@ void addOpCode(stack_t **stack, unsigned int line_number);
 void nopOpCode(stack_t **stack, unsigned int line_number);
 
 /* stack_utils.c */
-void addStack(unsigned int n);
 stack_t *getStack(unsigned int position);
 void clearStack();
 
 /* instruction_utils.c */
-unsigned int ex_instruction(char *opCode, unsigned int line, int val);
+unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack);
 
 /* string_utils.c */
 char **split_str(char *str, const char *delim);
