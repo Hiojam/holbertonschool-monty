@@ -1,7 +1,10 @@
 #include "monty.h"
 
-unsigned int ex_instruction(char *opCode, unsigned int line, int val)
+unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack)
 {
+    (void)line;
+    (void)val;
+    unsigned int i = 0, n = (unsigned int)val;
 	instruction_t instructions[] = {
 		{"push", pushOpCode},
 		{"pall", pallOpCode},
@@ -12,16 +15,20 @@ unsigned int ex_instruction(char *opCode, unsigned int line, int val)
 		{"nop", nopOpCode},
 		{NULL, NULL}
 	};
-	unsigned int i = 0;
 
-	if (val != -1)
-		addStack(val);
-
+    printf("Entró a ejecutar\n");
 	while (instructions[i].opcode != NULL)
 	{
 		if (strcmp(opCode, instructions[i].opcode) == 0)
 		{
-			instructions[i].f(head, line);
+            if (strcmp("push", opCode) == 0)
+            {
+                printf("push\n");
+                instructions[i].f(stack, n);
+                return (1);
+            }
+            printf("No push\n");
+			instructions[i].f(stack, line);
 			return (1);
 		}
 		i++;
