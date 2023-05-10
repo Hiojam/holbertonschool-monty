@@ -1,30 +1,9 @@
 #include "monty.h"
 
-void addStack(unsigned int n)
-{
-	stack_t *element = malloc(sizeof(stack_t));
-
-	if (element == NULL)
-		return;
-
-	element->n = n;
-	element->next = NULL;
-	element->prev = NULL;
-
-	if (*head == NULL)
-	{
-		*head = element;
-		return;
-	}
-
-	element->next = *head;
-	*head = element;
-	element->next->prev = element;
-	return;
-}
 
 stack_t *getStack(unsigned int position)
 {
+	stack_t **head = NULL;
 	stack_t *node = malloc(sizeof(stack_t));
 	unsigned int i = 0;
 
@@ -43,6 +22,7 @@ stack_t *getStack(unsigned int position)
 
 void clearStack()
 {
+	stack_t **head = NULL;
 	stack_t *tmp;
 
 	while ((*head))
