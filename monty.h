@@ -87,7 +87,6 @@ void nopOpCode(stack_t **stack, unsigned int line_number);
 
 /* stack_utils.c */
 int deleteStack(stack_t **head, unsigned int index);
-stack_t *getStack(unsigned int position);
 void clearStack();
 
 /* instruction_utils.c */
@@ -96,9 +95,8 @@ int chek_push_usage(char **arr);
 int is_num(char *arr);
 
 /* string_utils.c */
-char **split_str(char *str, const char *delim);
-int str_count_words(char *s, const char *delim);
 void free_array(char **arr);
 int only_spaces(char *line);
+char **tokenize(char *line);
 
 #endif

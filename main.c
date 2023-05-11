@@ -54,7 +54,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 			file_info.n_line++;
 			continue;
 		}
-		file_info.arr = split_str(file_info.line, " \n\t");
+		file_info.arr = tokenize(file_info.line);
 		if (file_info.arr == NULL)
 		{
 			file_info.n_line++;

@@ -7,88 +7,144 @@
  *
  * Return: An array of strings representing the split input.
  */
-char **split_str(char *str, const char *delim)
+// char **split_str(char *str, const char *delim)
+// {
+// 	char *tok, *copy, *comment;
+// 	char **array;
+// 	unsigned int len = 0, count = 0, i = 0;
+// 	int numWords = str_count_words(str, delim);
+
+// 	/* Make a copy of the input string */
+// 	copy = strdup(str);
+// 	if (!copy)
+// 	{
+// 		throwCustomError("Error: malloc failed\n");
+// 		free_all();
+// 		exit(EXIT_FAILURE);
+// 	}
+
+// 	for (i = 0; copy[i]; i++)
+// 	{
+// 		if (copy[i] == ' ')
+// 			continue;
+// 		count = 1;
+// 		break;
+// 	}
+// 	if (count == 0)
+// 	{
+// 		free(copy);
+// 		return (NULL);
+// 	}
+// 	count = 0;
+
+// 	array = (char **) malloc((numWords + 1) * sizeof(char *));
+// 	if (array == NULL)
+// 	{
+// 		free(copy);
+// 		return (NULL);
+// 	}
+
+// 	/* Check if the string starts with a colon */
+// 	if (copy[0] == ':')
+// 	{
+// 		array[count] = strdup("");
+// 		if (array[count] == NULL)
+// 		{
+// 			free_array(array);
+// 			free(copy);
+// 			return (NULL);
+// 		}
+// 		count++;
+// 	}
+
+// 	tok = strtok_r(copy, delim, &comment);
+
+// 	for (i = 0; tok[i]; i++)
+// 	{
+// 		if (tok[i] == ' ')
+// 		{
+// 			memmove(&tok[i], &tok[i + 1], strlen(tok) - i);
+// 		}
+// 		else
+// 			break;
+// 	}
+
+// 	while (tok != NULL)
+// 	{
+// 		len = strlen(tok);
+
+// 		array[count] = (char *) malloc((len + 1) * sizeof(char));
+// 		if (array[count] == NULL)
+// 		{
+// 			free_array(array);
+// 			free(copy);
+// 			return (NULL);
+// 		}
+
+// 		for (i = 0; i < len; i++)
+// 			array[count][i] = tok[i];
+
+// 	    array[count][i] = '\0';
+// 		count++;
+// 		tok = strtok_r(NULL, delim, &comment);
+// 	}
+// 	array[count] = NULL;
+// 	free(copy);
+// 	return (array);
+// }
+
+
+/**
+ * tokenize - splits a string and returns an array of each word of the string.
+ * @line: string to tokenize
+ *
+ * Return: Pointer to pointer to an array of words
+ */
+char **tokenize(char *line)
 {
-	char *tok, *copy, *comment;
-	char **array;
-	unsigned int len = 0, count = 0, i = 0;
-	int numWords = str_count_words(str, delim);
+	char *line_cpy = NULL, *token = NULL, *delim = " \t\n";
+	char **args = NULL;
+	int n_args = 0, i = 0;
 
-	/* Make a copy of the input string */
-	copy = strdup(str);
-	if (copy == NULL)
-		return (NULL);
-
-	for (i = 0; copy[i]; i++)
+	line_cpy = strdup(line);
+	if (!line_cpy)
 	{
-		if (copy[i] == ' ')
-			continue;
-		count = 1;
-		break;
+		throwCustomError("Error: malloc failed\n");
+		free_all();
+		exit(EXIT_FAILURE);
 	}
-	if (count == 0)
+	token = strtok(line_cpy, delim);
+	while (token)
 	{
-		free(copy);
-		return (NULL);
+		n_args++;
+		token = strtok(NULL, delim);
 	}
-	count = 0;
-
-	array = (char **) malloc((numWords + 1) * sizeof(char *));
-	if (array == NULL)
+	free(line_cpy);
+	n_args++;
+	args = malloc(sizeof(char *) * n_args);
+	if (!args)
 	{
-		free(copy);
-		return (NULL);
+		throwCustomError("Error: malloc failed\n");
+		free_all();
+		exit(EXIT_FAILURE);
 	}
-
-	/* Check if the string starts with a colon */
-	if (copy[0] == ':')
+	token = strtok(line, delim);
+	for (i = 0; i < n_args - 1 && token != NULL; i++)
 	{
-		array[count] = strdup("");
-		if (array[count] == NULL)
+		args[i] = strdup(token);
+		if (!args[i])
 		{
-			free_array(array);
-			free(copy);
-			return (NULL);
+			while (--i >= 0)
+				free(args[i]);
+			throwCustomError("Error: malloc failed\n");
+			free_all();
+			exit(EXIT_FAILURE);
 		}
-		count++;
+		token = strtok(NULL, delim);
 	}
-
-	tok = strtok_r(copy, delim, &comment);
-
-	for (i = 0; tok[i]; i++)
-	{
-		if (tok[i] == ' ')
-		{
-			memmove(&tok[i], &tok[i + 1], strlen(tok) - i);
-		}
-		else
-			break;
-	}
-
-	while (tok != NULL)
-	{
-		len = strlen(tok);
-
-		array[count] = (char *) malloc((len + 1) * sizeof(char));
-		if (array[count] == NULL)
-		{
-			free_array(array);
-			free(copy);
-			return (NULL);
-		}
-
-		for (i = 0; i < len; i++)
-			array[count][i] = tok[i];
-
-	    array[count][i] = '\0';
-		count++;
-		tok = strtok_r(NULL, delim, &comment);
-	}
-	array[count] = NULL;
-	free(copy);
-	return (array);
+	args[i] = NULL;
+	return (args);
 }
-
 /**
  * str_count_words - Count words in a string.
  * @s: String to be splitted.
@@ -96,26 +152,26 @@ char **split_str(char *str, const char *delim)
  *
  * Return: Number of words.
 */
-int str_count_words(char *s, const char *delim)
-{
-	char *tok, *comment;
-	int numWords = 0;
-	char *newS = strdup(s);
+// int str_count_words(char *s, const char *delim)
+// {
+// 	char *tok, *comment;
+// 	int numWords = 0;
+// 	char *newS = strdup(s);
 
-	if (newS == NULL)
-		return (0);
+// 	if (newS == NULL)
+// 		return (0);
 
-	tok = strtok_r(newS, delim, &comment);         /* Get first token */
+// 	tok = strtok_r(newS, delim, &comment);         /* Get first token */
 
-	while (tok != NULL)               /* Check for delimiters */
-	{
-		numWords++;
-		tok = strtok_r(NULL, delim, &comment);    /* Go through other tokens */
-	}
+// 	while (tok != NULL)               /* Check for delimiters */
+// 	{
+// 		numWords++;
+// 		tok = strtok_r(NULL, delim, &comment);    /* Go through other tokens */
+// 	}
 
-	free(newS);
-	return (numWords);
-}
+// 	free(newS);
+// 	return (numWords);
+// }
 
 /**
  * free_array- Frees an array.
