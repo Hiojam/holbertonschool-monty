@@ -8,7 +8,7 @@ void pushOpCode(stack_t **stack, int val)
 	if (element == NULL)
 	{
 		throwCustomError("Error: malloc failed\n");
-		free(stack);
+		free(element);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
@@ -17,6 +17,7 @@ void pushOpCode(stack_t **stack, int val)
 		if (chek_push_usage(file_info.arr) != 0)
 		{
 			throwCustomError("L%d: usage: push integer\n", file_info.n_line);
+			free(element);
 			free_all();
 			exit(EXIT_FAILURE);
 		}
@@ -68,7 +69,8 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 	if (!st)
 	{
 		throwCustomError("Error: malloc failed\n");
-		return;
+		free_all();
+		exit(EXIT_FAILURE);
 	}
 
 	st = (*stack);
@@ -76,6 +78,7 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 	if (!st)
 	{
 		throwCustomError("L%d: can't pint, stack empty\n", line_number);
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", st->n);
@@ -95,6 +98,7 @@ void popOpCode(stack_t **stack, unsigned int line_number)
 	if (resul == -1)
 	{
 		throwCustomError("L%d: can't pop an empty stack\n", line_number);
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 }
@@ -112,8 +116,9 @@ void swapOpCode(stack_t **stack, unsigned int line_number)
 
 		if (*stack == NULL || (*stack)->next == NULL)
 		{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+			throwCustomError("L%d: can't swap, stack too short\n", line_number);
+			free_all();
+			exit(EXIT_FAILURE);
 		}
 		temp = (*stack)->n;
 		(*stack)->n = (*stack)->next->n;

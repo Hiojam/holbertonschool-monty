@@ -56,6 +56,7 @@ typedef struct file_s
 	unsigned int n_line;
 	char **arr;
 	char *line;
+	stack_t *stack;
 	
 } file_t;
 
@@ -70,6 +71,7 @@ void checkInstructions(char *fileName, stack_t **s);
 /* errors.c */
 void throwCustomError(char *error, ...);
 void free_all();
+void free_stack(stack_t *head);
 
 /* file_utils.c */
 unsigned int accessFile(char *fileName);
