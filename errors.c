@@ -20,3 +20,10 @@ void throwCustomError(char *error, ...)
 
 	va_end(args);
 }
+
+void free_all(char *line, char **arr)
+{
+	free_array(arr);
+	free(line);
+	fclose(file_info.f);
+}

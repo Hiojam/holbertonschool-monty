@@ -39,6 +39,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct file_s - opcode and its function
+ * @file: file name
+ * @f: file descriptor
+ * @n_line: number of line
+ *
+ * Description: file info
+ */
+typedef struct file_s
+{
+	char *file;
+	FILE *f;
+	unsigned int n_line;
+	
+} file_t;
+
+extern file_t file_info;
+
 
 /* ----- Self-Functions ----- */
 
@@ -47,6 +65,7 @@ void checkInstructions(char *fileName, stack_t **s);
 
 /* errors.c */
 void throwCustomError(char *error, ...);
+void free_all(char *line, char **arr);
 
 /* file_utils.c */
 unsigned int accessFile(char *fileName);
@@ -67,6 +86,7 @@ void clearStack();
 
 /* instruction_utils.c */
 unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack);
+int chek_push_usage(char **arr);
 
 /* string_utils.c */
 char **split_str(char *str, const char *delim);
