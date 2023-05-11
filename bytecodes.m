@@ -1,10 +1,4 @@
 push 1
-pint
-push 2
-pint
-push 3
+push             2
+ 
 pall
-pop
-pall
-amen
-pint

@@ -40,7 +40,12 @@ void checkInstructions(char *fileName, stack_t **stack)
 
 	while ((linesRead = getline(&line, &len, f)) != -1)
 	{
-		arr = split_str(line, " \n");
+		if (strcmp(line, "\n") == 0)
+			continue;
+
+		arr = split_str(line, " \n\t");
+		if (arr == NULL)
+			continue;
 
         if (arr[1])
             val = atoi(arr[1]);

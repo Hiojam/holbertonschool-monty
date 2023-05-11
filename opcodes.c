@@ -2,7 +2,7 @@
 
 void pushOpCode(stack_t **stack, unsigned int line_number)
 {
-    int n = (signed int)line_number;
+    int n = (signed int) line_number;
     stack_t *element = malloc(sizeof(stack_t));
 
 	if (element == NULL)
