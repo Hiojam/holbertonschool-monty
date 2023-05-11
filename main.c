@@ -44,10 +44,16 @@ void checkInstructions(char *fileName, stack_t **stack)
 	{
 		val = 0;
 		if (only_spaces(line) == 1)
+		{
+			file_info.n_line++;
 			continue;
+		}
 		file_info.arr = split_str(line, " \n\t");
 		if (file_info.arr == NULL)
+		{
+			file_info.n_line++;
 			continue;
+		}
 		if (file_info.arr[1])
 			val = atoi(file_info.arr[1]);
 		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
