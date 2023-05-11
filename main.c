@@ -40,16 +40,13 @@ void checkInstructions(char *fileName, stack_t **stack)
 
 	while ((linesRead = getline(&line, &len, f)) != -1)
 	{
-		if (strcmp(line, "\n") == 0)
+		if (only_spaces(line) == 1)
 			continue;
-
 		arr = split_str(line, " \n\t");
 		if (arr == NULL)
 			continue;
-
         if (arr[1])
             val = atoi(arr[1]);
-		
 		success = ex_instruction(arr[0], i, val, stack);
 		if (!success)
 		{
