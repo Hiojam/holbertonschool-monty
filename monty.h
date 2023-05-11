@@ -39,15 +39,33 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t **head;
+/**
+ * struct file_s - opcode and its function
+ * @file: file name
+ * @f: file descriptor
+ * @n_line: number of line
+ *
+ * Description: file info
+ */
+typedef struct file_s
+{
+	char *file;
+	FILE *f;
+	unsigned int n_line;
+	
+} file_t;
+
+extern file_t file_info;
+
 
 /* ----- Self-Functions ----- */
 
 /* main.c */
-void checkInstructions(char *fileName);
+void checkInstructions(char *fileName, stack_t **s);
 
 /* errors.c */
 void throwCustomError(char *error, ...);
+void free_all(char *line, char **arr);
 
 /* file_utils.c */
 unsigned int accessFile(char *fileName);
@@ -62,16 +80,18 @@ void addOpCode(stack_t **stack, unsigned int line_number);
 void nopOpCode(stack_t **stack, unsigned int line_number);
 
 /* stack_utils.c */
-void addStack(unsigned int n);
+int deleteStack(stack_t **head, unsigned int index);
 stack_t *getStack(unsigned int position);
 void clearStack();
 
 /* instruction_utils.c */
-unsigned int ex_instruction(char *opCode, unsigned int line, int val);
+unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack);
+int chek_push_usage(char **arr);
 
 /* string_utils.c */
 char **split_str(char *str, const char *delim);
 int str_count_words(char *s, const char *delim);
 void free_array(char **arr);
+int only_spaces(char *line);
 
 #endif

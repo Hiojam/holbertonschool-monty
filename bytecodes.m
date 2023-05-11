@@ -1,1 +1,7 @@
-push 123
+push 1
+push             2
+
+pall
+
+push
+pall

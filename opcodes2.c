@@ -27,8 +27,14 @@ void addOpCode(stack_t **stack, unsigned int line_number)
 
 void nopOpCode(stack_t **stack, unsigned int line_number)
 {
+<<<<<<< HEAD
 	 (void) stack;
 	 (void) line_number;
 	 // Do nothing
 	 //
 }
+=======
+	(void) stack;
+	(void) line_number;
+}
+>>>>>>> e1e3782df203aa2dd9a7c5cad89b021566700041
