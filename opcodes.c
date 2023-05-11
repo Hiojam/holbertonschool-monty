@@ -54,7 +54,7 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 
 	if (!st)
 	{
-		throwCustomError("L<%d>: can't pint, stack empty\n", line_number);
+		throwCustomError("L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", st->n);
@@ -66,7 +66,7 @@ void popOpCode(stack_t **stack, unsigned int line_number)
 	
 	if (resul == -1)
 	{
-		throwCustomError("L<%d>: can't pop an empty stack\n", line_number);
+		throwCustomError("L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}	
 }

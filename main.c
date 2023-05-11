@@ -48,7 +48,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 		success = ex_instruction(arr[0], i, val, stack);
 		if (!success)
 		{
-			throwCustomError("L<%d>: unknown instruction <%s>\n", i, arr[0]);
+			throwCustomError("L%d: unknown instruction %s\n", i, arr[0]);
 			free_array(arr);
 			free(line);
 			fclose(f);
