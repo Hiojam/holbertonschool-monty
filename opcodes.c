@@ -8,7 +8,7 @@ void pushOpCode(stack_t **stack, unsigned int line_number)
 	if (element == NULL)
 	{
 		throwCustomError("Error: malloc failed\n");
-		free_array(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 		return;
 	}
