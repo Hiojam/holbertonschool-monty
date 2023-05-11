@@ -70,8 +70,8 @@ void checkInstructions(char *fileName, stack_t **stack)
 			exit(EXIT_FAILURE);
 		}
 		free_array(file_info.arr);
+		file_info.arr = NULL;
 		file_info.n_line++;
 	}
-	fclose(file_info.f);
 	free_all();
 }
