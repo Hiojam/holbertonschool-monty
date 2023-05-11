@@ -6,3 +6,5 @@ push 3
 pall
 pop
 pall
+amen
+pint

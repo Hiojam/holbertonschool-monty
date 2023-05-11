@@ -33,7 +33,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 	FILE *f = fopen(fileName, "r");
 	char *line;
 	size_t len = 0;
-    unsigned int i = 1;
+    unsigned int i = 1, success = 1;
 	int linesRead;
 	char **arr;
 	int val = 0;
@@ -45,9 +45,18 @@ void checkInstructions(char *fileName, stack_t **stack)
         if (arr[1])
             val = atoi(arr[1]);
 		
-		ex_instruction(arr[0], i, val, stack);
+		success = ex_instruction(arr[0], i, val, stack);
+		if (!success)
+		{
+			throwCustomError("L<%d>: unknown instruction <%s>\n", i, arr[0]);
+			free_array(arr);
+			free(line);
+			fclose(f);
+			exit(EXIT_FAILURE);
+		}
 		free_array(arr);
 		i++;
 	}
 	fclose(f);
+	free(line);
 }

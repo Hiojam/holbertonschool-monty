@@ -7,7 +7,9 @@ void pushOpCode(stack_t **stack, unsigned int line_number)
 
 	if (element == NULL)
 	{
-		throwCustomError("Malloc fail in push.");
+		throwCustomError("Error: malloc failed\n");
+		free_array(stack);
+		exit(EXIT_FAILURE);
 		return;
 	}
 
@@ -44,7 +46,7 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 
 	if (!st)
 	{
-		throwCustomError("Error: malloc failed");
+		throwCustomError("Error: malloc failed\n");
 		return;
 	}
 	
@@ -52,7 +54,7 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 
 	if (!st)
 	{
-		printf("L<%d>: can't pint, stack empty\n", line_number);
+		throwCustomError("L<%d>: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", st->n);
@@ -64,7 +66,7 @@ void popOpCode(stack_t **stack, unsigned int line_number)
 	
 	if (resul == -1)
 	{
-		printf("L<%d>: can't pop an empty stack\n", line_number);
+		throwCustomError("L<%d>: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}	
 }
