@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <errno.h>
 #include <string.h>
+#include <ctype.h>
 
 /* ----- Data Structures ----- */
 
@@ -74,7 +75,7 @@ void free_all();
 unsigned int accessFile(char *fileName);
 
 /* opcodes */
-void pushOpCode(stack_t **stack, unsigned int line_number);
+void pushOpCode(stack_t **stack, int val);
 void pallOpCode(stack_t **stack, unsigned int line_number);
 void pintOpCode(stack_t **stack, unsigned int line_number);
 void popOpCode(stack_t **stack, unsigned int line_number);
@@ -90,6 +91,7 @@ void clearStack();
 /* instruction_utils.c */
 unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack);
 int chek_push_usage(char **arr);
+int is_num(char *arr);
 
 /* string_utils.c */
 char **split_str(char *str, const char *delim);

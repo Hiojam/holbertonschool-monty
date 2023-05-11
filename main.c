@@ -54,7 +54,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 			file_info.n_line++;
 			continue;
 		}
-		if (file_info.arr[1])
+		if (file_info.arr[1] && is_num(file_info.arr[1]))
 			val = atoi(file_info.arr[1]);
 		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
 		if (!success)

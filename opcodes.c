@@ -1,8 +1,8 @@
 #include "monty.h"
 
-void pushOpCode(stack_t **stack, unsigned int line_number)
+void pushOpCode(stack_t **stack, int val)
 {
-    int n = (signed int) line_number;
+    int n = val;
     stack_t *element = malloc(sizeof(stack_t));
 
 	if (element == NULL)
