@@ -1,12 +1,16 @@
 #include "monty.h"
 
-//*
+/**
+* pushOpCode - function to push
+* @stack: stack
+* @line_number: line
+* Return: void
+**/
 
-//*
 void pushOpCode(stack_t **stack, unsigned int line_number)
 {
-    int n = (signed int) line_number;
-    stack_t *element = malloc(sizeof(stack_t));
+	int n = (signed int) line_number;
+	stack_t *element = malloc(sizeof(stack_t));
 
 	if (element == NULL)
 	{
@@ -28,27 +32,41 @@ void pushOpCode(stack_t **stack, unsigned int line_number)
 	element->prev = NULL;
 	if (*stack == NULL)
 	{
-        element->next = NULL;
+	element->next = NULL;
 	}
-    else
-    {
-        element->next = (*stack);
-        (*stack)->prev = element;
-    }
+	else
+	{
+	element->next = (*stack);
+	(*stack)->prev = element;
+	}
 	*stack = element;
 }
+
+/**
+* pallOpCode - prints all the elements of list stack_t.
+* @stack: head
+* @line_number: line_number
+* Return: void
+**/
 
 void pallOpCode(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
-    stack_t *aux = (*stack);
+	stack_t *aux = (*stack);
 
-    while (aux)
-    {
-        printf("%d\n", aux->n);
-        aux = aux->next;
-    }
+	while (aux)
+	{
+	printf("%d\n", aux->n);
+	aux = aux->next;
+	}
 }
+
+/**
+* pintOpCode - prints the value at the top of the stack
+* @stack: stack head
+* @line_number: line num
+* Return: void
+**/
 
 void pintOpCode(stack_t **stack, unsigned int line_number)
 {
@@ -59,7 +77,7 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 		throwCustomError("Error: malloc failed\n");
 		return;
 	}
-	
+
 	st = (*stack);
 
 	if (!st)
@@ -70,17 +88,23 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 	printf("%d\n", st->n);
 }
 
+/**
+* popOpCode - removes the top element of the stack.
+* @stack: stack head
+* @line_number: line num
+* Return: void
+**/
+
 void popOpCode(stack_t **stack, unsigned int line_number)
 {
 	int resul = deleteStack(stack, 0);
-	
+
 	if (resul == -1)
 	{
 		throwCustomError("L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
-	}	
+	}
 }
-
 
 /**
 * swap - Swaps the top two elements of the stack
@@ -102,4 +126,3 @@ void swap(stack_t **stack, unsigned int line_number)
 		(*stack)->n = (*stack)->next->n;
 		(*stack)->next->n = temp;
 }
-
