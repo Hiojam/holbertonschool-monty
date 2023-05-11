@@ -68,7 +68,12 @@ void pallOpCode(stack_t **stack, unsigned int line_number)
 **/
 void pintOpCode(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
+	if (!(*stack))
+	{
+		throwCustomError("L%d: can't pint, stack empty\n", line_number);
+		free_all();
+		exit(EXIT_FAILURE);
+	}
 	printf("%d\n", (*stack)->n);
 }
 
