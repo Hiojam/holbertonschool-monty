@@ -107,13 +107,13 @@ void popOpCode(stack_t **stack, unsigned int line_number)
 }
 
 /**
-* swap - Swaps the top two elements of the stack
+* swapOpCode - Swaps the top two elements of the stack
 * @stack: The pointer to the stack
 * @line_number: The line number in the Monty byte code file
 * Return: Void
 **/
 
-void swap(stack_t **stack, unsigned int line_number)
+void swapOpCode(stack_t **stack, unsigned int line_number)
 {
 		int temp;
 
