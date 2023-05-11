@@ -40,15 +40,13 @@ void checkInstructions(char *fileName, stack_t **stack)
 
 	while ((linesRead = getline(&line, &len, f)) != -1)
 	{
-		arr = split_str(line, " ");
-		printf("arr[0]: %s\n", arr[0]);
+		arr = split_str(line, " \n");
+
         if (arr[1])
-        {
             val = atoi(arr[1]);
-            printf("arr[1]: %s\n", arr[1]);
-            printf("val: %d\n", val);
-        }
+		
 		ex_instruction(arr[0], i, val, stack);
+		free_array(arr);
 		i++;
 	}
 	fclose(f);

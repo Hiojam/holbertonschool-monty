@@ -61,6 +61,7 @@ void addOpCode(stack_t **stack, unsigned int line_number);
 void nopOpCode(stack_t **stack, unsigned int line_number);
 
 /* stack_utils.c */
+int deleteStack(stack_t **head, unsigned int index);
 stack_t *getStack(unsigned int position);
 void clearStack();
 
