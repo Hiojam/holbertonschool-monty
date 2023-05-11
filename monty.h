@@ -44,6 +44,7 @@ typedef struct instruction_s
  * @file: file name
  * @f: file descriptor
  * @n_line: number of line
+ * @args: arguments
  *
  * Description: file info
  */
@@ -52,6 +53,8 @@ typedef struct file_s
 	char *file;
 	FILE *f;
 	unsigned int n_line;
+	char **arr;
+	char *line;
 	
 } file_t;
 
@@ -65,7 +68,7 @@ void checkInstructions(char *fileName, stack_t **s);
 
 /* errors.c */
 void throwCustomError(char *error, ...);
-void free_all(char *line, char **arr);
+void free_all();
 
 /* file_utils.c */
 unsigned int accessFile(char *fileName);
