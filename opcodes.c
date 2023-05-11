@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+* pushOpCode - push a value at the top of the stack
+* @stack: stack head
+* @val: value
+* Return: void
+**/
 void pushOpCode(stack_t **stack, int val)
 {
     int n = val;
@@ -42,7 +48,6 @@ void pushOpCode(stack_t **stack, int val)
 * @line_number: line_number
 * Return: void
 **/
-
 void pallOpCode(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
@@ -61,27 +66,10 @@ void pallOpCode(stack_t **stack, unsigned int line_number)
 * @line_number: line num
 * Return: void
 **/
-
 void pintOpCode(stack_t **stack, unsigned int line_number)
 {
-	stack_t *st = malloc(sizeof(stack_t));
-
-	if (!st)
-	{
-		throwCustomError("Error: malloc failed\n");
-		free_all();
-		exit(EXIT_FAILURE);
-	}
-
-	st = (*stack);
-
-	if (!st)
-	{
-		throwCustomError("L%d: can't pint, stack empty\n", line_number);
-		free_all();
-		exit(EXIT_FAILURE);
-	}
-	printf("%d\n", st->n);
+	(void)line_number;
+	printf("%d\n", (*stack)->n);
 }
 
 /**
@@ -90,7 +78,6 @@ void pintOpCode(stack_t **stack, unsigned int line_number)
 * @line_number: line num
 * Return: void
 **/
-
 void popOpCode(stack_t **stack, unsigned int line_number)
 {
 	int resul = deleteStack(stack, 0);
@@ -109,7 +96,6 @@ void popOpCode(stack_t **stack, unsigned int line_number)
 * @line_number: The line number in the Monty byte code file
 * Return: Void
 **/
-
 void swapOpCode(stack_t **stack, unsigned int line_number)
 {
 		int temp;
