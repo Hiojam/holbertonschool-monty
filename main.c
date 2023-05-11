@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	file_info.f = fopen(fileName, "r");
-	char *line, **arr;
+	char *line;
 	size_t len = 0;
     unsigned int success = 1;
 	int val;
@@ -45,28 +45,19 @@ void checkInstructions(char *fileName, stack_t **stack)
 		val = 0;
 		if (only_spaces(line) == 1)
 			continue;
-		arr = split_str(line, " \n\t");
-		if (arr == NULL)
+		file_info.arr = split_str(line, " \n\t");
+		if (file_info.arr == NULL)
 			continue;
-		if (arr[1])
-			val = atoi(arr[1]);
-		if (val == 0)
-		{
-			if (chek_push_usage(arr) != 0)
-			{
-				throwCustomError("L%d: usage: push integer\n", file_info.n_line);
-				free_all(char *line, char **arr);
-				exit(EXIT_FAILURE);
-			}
-		} 
-		success = ex_instruction(arr[0], file_info.n_line, val, stack);
+		if (file_info.arr[1])
+			val = atoi(file_info.arr[1]);
+		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
 		if (!success)
 		{
-			throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, arr[0]);
-			void free_all(char *line, char **arr);
+			throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, file_info.arr[0]);
+			free_all();
 			exit(EXIT_FAILURE);
 		}
-		free_array(arr);
+		free_array(file_info.arr);
 		file_info.n_line++;
 	}
 	fclose(file_info.f);

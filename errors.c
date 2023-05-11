@@ -21,9 +21,11 @@ void throwCustomError(char *error, ...)
 	va_end(args);
 }
 
-void free_all(char *line, char **arr)
+void free_all()
 {
-	free_array(arr);
-	free(line);
+	if (file_info.arr)
+		free_array(file_info.arr);
+	if (file_info.line)
+		free(file_info.line);
 	fclose(file_info.f);
 }

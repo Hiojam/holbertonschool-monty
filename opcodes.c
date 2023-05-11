@@ -9,13 +9,20 @@ void pushOpCode(stack_t **stack, unsigned int line_number)
 	{
 		throwCustomError("Error: malloc failed\n");
 		free(stack);
+		free_all();
 		exit(EXIT_FAILURE);
-		return;
 	}
-
+	if (n == 0)
+	{
+		if (chek_push_usage(file_info.arr) != 0)
+		{
+			throwCustomError("L%d: usage: push integer\n", file_info.n_line);
+			free_all();
+			exit(EXIT_FAILURE);
+		}
+	}
 	element->n = n;
 	element->prev = NULL;
-
 	if (*stack == NULL)
 	{
         element->next = NULL;

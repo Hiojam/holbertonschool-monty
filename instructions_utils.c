@@ -36,15 +36,12 @@ unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **
 
 int chek_push_usage(char **arr)
 {
-	printf("Entró a  check push\n");
-	if (strcmp(arr[0], "push") != 0)
-	{
-		printf("Entró a op. 1\n");
-		return (0);
-	}
 	if (!arr[1])
 	{
-		printf("Entró a op. 2\n");
+		return (-1);
+	}
+	else if (strcmp(arr[0], "0") != 0)
+	{
 		return (-1);
 	}
 	return (0);
