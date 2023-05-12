@@ -17,7 +17,7 @@ void clearStack(void)
 }
 
 /**
-* deleteStack - removes an item from a doubly linked stack
+* deleteStack: removes an item from a doubly linked stack
 * @head: pointer which represents the start the linked list
 * @index: unsigned integer representing the index of the node
 */
