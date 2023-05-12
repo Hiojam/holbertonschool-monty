@@ -20,10 +20,7 @@ char **tokenize(char *line)
 	}
 	token = strtok(line_cpy, delim);
 	while (token)
-	{
-		n_args++;
-		token = strtok(NULL, delim);
-	}
+		n_args++, token = strtok(NULL, delim);
 	free(line_cpy);
 	n_args++;
 	args = malloc(sizeof(char *) * n_args);
