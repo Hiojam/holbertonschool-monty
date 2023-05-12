@@ -57,8 +57,7 @@ int is_num(char *arr)
 			{
 				if ((arr[0] != '-' && arr[0] != '+'))
 					return (0);
-				else
-					continue;
+				continue;
 			}
 			return (0);
 		}
