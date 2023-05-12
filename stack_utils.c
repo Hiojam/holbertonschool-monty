@@ -17,8 +17,11 @@ void clearStack(void)
 }
 
 /**
-* deleteStack - removes an item from a doubly linked stack
-**/
+ * deleteStack - removes an item from a doubly linked stack
+ * 
+ * @head: The stack head.
+ * @index: The position where you want to delete an item.
+*/
 int deleteStack(stack_t **head, unsigned int index)
 {
 	stack_t *tmp;

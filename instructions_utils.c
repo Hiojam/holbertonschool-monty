@@ -1,5 +1,15 @@
 #include "monty.h"
 
+/**
+ * ex_instruction - Executes an specific instruction if found.
+ * 
+ * @oC: The opCode to search for.
+ * @l: The line number.
+ * @v: The parameter value. Default is 0.
+ * @s: The stack.
+ * 
+ * Return: 1 on Success, 0 on Error.
+*/
 int ex_instruction(char *oC, unsigned int l, int v, stack_t **s)
 {
 	unsigned int i = 0;
@@ -32,6 +42,11 @@ int ex_instruction(char *oC, unsigned int l, int v, stack_t **s)
 	return (0);
 }
 
+/**
+ * check_push_usage - Checks wether the push opCode can be used.
+ * 
+ * @arr: The array containing args.
+*/
 int chek_push_usage(char **arr)
 {
 	if (!arr[1])
@@ -45,6 +60,12 @@ int chek_push_usage(char **arr)
 	return (0);
 }
 
+/**
+ * is_num - Checks if the arr values are a number.
+ * 
+ * @arr: The array to check from.
+ * Return: 1 on Success, 0 on Error.
+*/
 int is_num(char *arr)
 {
 	int i;
