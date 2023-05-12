@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
 }
 
 /**
-* void - Principal
+* checkInstructions - check the instructions
 * @fileName: The name
 * @stack: free memory
 * Return: in 0
