@@ -15,7 +15,9 @@ void throwCustomError(char *error, ...)
 	vfprintf(stderr, error, args);
 	va_end(args);
 }
-
+/**
+* free_all - Free Memory Dinamic
+**/
 void free_all(void)
 {
 	if (file_info.stack)
@@ -30,7 +32,7 @@ void free_all(void)
 }
 
 /**
- * free_dlistint - frees a dlistint_t list
+ * free_stack - frees a dlistint_t list
  * @head: of a list
  **/
 void free_stack(stack_t *head)
