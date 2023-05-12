@@ -16,7 +16,7 @@ void throwCustomError(char *error, ...)
 	va_end(args);
 }
 
-void free_all()
+void free_all(void)
 {
 	if (file_info.stack)
 		free_stack(file_info.stack);
