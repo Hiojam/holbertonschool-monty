@@ -28,6 +28,8 @@ void free_all(void)
 		free_array(file_info.arr);
 	if (file_info.line)
 		free(file_info.line);
+	if (file_info.f)
+		fclose(file_info.f);
 }
 
 /**
