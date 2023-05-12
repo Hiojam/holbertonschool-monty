@@ -1,6 +1,11 @@
 #include "monty.h"
 
 file_t file_info;
+/**
+* main - the principal function
+* @argc: Nothing more
+* @argv: More 
+*/
 int main(int argc, char const *argv[])
 {
 	file_info.stack = NULL;
