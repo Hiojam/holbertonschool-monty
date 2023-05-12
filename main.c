@@ -4,52 +4,31 @@ file_t file_info;
 
 int main(int argc, char const *argv[])
 {
-
-	stack_t *stack = NULL;
-<<<<<<< HEAD
-
 	file_info.stack = NULL;
-=======
-	
-    file_info.stack = NULL;
->>>>>>> 67781d54133f62f9741975e2311235c8f5eb4d5d
-
-
 	if (argc != 2)
 	{
 		throwCustomError("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	file_info.file = strdup(argv[1]);
-
 	if (!file_info.file)
 	{
 		throwCustomError("Error: malloc failed");
 		free_all();
 		exit(EXIT_FAILURE);
 	}
-
-	/* Check wether the file can be accessed and exit if not. */
 	accessFile(file_info.file);
-
-	/* Check instructions of the file. */
 	checkInstructions(file_info.file, &file_info.stack);
 	return (0);
 }
 
 void checkInstructions(char *fileName, stack_t **stack)
 {
-	file_info.f = fopen(fileName, "r");
 	size_t len = 0;
-
-	unsigned int success = 1;
-	int val;
-
 	unsigned int success = 1;
 	int val, nReads;
 
-
+	file_info.f = fopen(fileName, "r");
 	file_info.n_line = 1;
 	while ((nReads = getline(&file_info.line, &len, file_info.f)) != -1)
 	{
