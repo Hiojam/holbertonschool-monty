@@ -4,7 +4,7 @@ file_t file_info;
 /**
 * main - the principal function
 * @argc: Nothing more
-* @argv: More 
+* @argv: More
 * Return: Nothing
 */
 int main(int argc, char const *argv[])
