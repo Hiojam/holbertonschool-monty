@@ -21,9 +21,6 @@ int main(int argc, char const *argv[])
 	return (0);
 }
 
-/**
-* checkInstructions - check the instructions from a text file.
-*//
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	size_t len = 0;
