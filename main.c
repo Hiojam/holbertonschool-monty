@@ -56,7 +56,8 @@ void checkInstructions(char *fileName, stack_t **stack)
 		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
 		if (!success)
 		{
-			throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, file_info.arr[0]);
+			throwCustomError("L%d: unknown instruction %s\n",
+					 file_info.n_line, file_info.arr[0]);
 			free_all();
 			exit(EXIT_FAILURE);
 		}
