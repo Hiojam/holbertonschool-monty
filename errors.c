@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
-* throwCustomError - Throws a custom error to stdout
-* @error: Contains the error string to be printed
-* Return: Void.
-**/
+ * throwCustomError - Throws a custom error to stdout
+ * @error: Contains the error string to be printed
+ * Return: Void.
+ **/
 
 void throwCustomError(char *error, ...)
 {

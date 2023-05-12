@@ -1,17 +1,17 @@
 #include "monty.h"
 
 /**
-<<<<<<< HEAD
+  <<<<<<< HEAD
  * split_str - Splits a string by a given delimiter
  * @str: String to be splitted
  * @delim: Delimiter to use for splitting
  * Return: An array of strings representing the split input
-=======
+ =======
  * tokenize - splits a string and returns an array of each word of the string.
  * @line: string to tokenize
  *
  * Return: Pointer to pointer to an array of words
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
+ >>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
  */
 char **tokenize(char *line)
 {
@@ -65,7 +65,7 @@ char **tokenize(char *line)
  * @s: String to be splitted.
  * @delim: Delimeter.
  * Return: Number of words.
-*/
+ */
 int str_count_words(char *s, const char *delim)
 {
 	char *tok, *comment;
@@ -90,9 +90,9 @@ int str_count_words(char *s, const char *delim)
 >>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
 
 /**
-* free_array- Frees an array.
-* @arr: Array to be freed.
-**/
+ * free_array- Frees an array.
+ * @arr: Array to be freed.
+ **/
 void free_array(char **arr)
 {
 	int i = 0;
@@ -106,10 +106,10 @@ void free_array(char **arr)
 }
 
 /**
-* only_spaces - check for a line with only spaces
-* @line: to check
-* Return: 0 or 1
-**/
+ * only_spaces - check for a line with only spaces
+ * @line: to check
+ * Return: 0 or 1
+ **/
 
 int only_spaces(char *line)
 {

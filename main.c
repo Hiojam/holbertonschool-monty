@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
 
 	stack_t *stack = NULL;
 
-    file_info.stack = NULL;
+	file_info.stack = NULL;
 
 
 	if (argc != 2)
@@ -41,7 +41,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 	unsigned int success = 1;
 	int val;
 
-    unsigned int success = 1;
+	unsigned int success = 1;
 	int val, nReads;
 
 
@@ -71,7 +71,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
 		if (!success)
 		{
-		throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, file_info.arr[0]);
+			throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, file_info.arr[0]);
 			free_all();
 			exit(EXIT_FAILURE);
 		}

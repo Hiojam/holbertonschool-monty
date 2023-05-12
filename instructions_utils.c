@@ -3,9 +3,8 @@
 unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack)
 {
 
-unsigned int i = 0, n = (unsigned int) val;
-
-    unsigned int i = 0;
+	unsigned int i = 0, n = (unsigned int) val;
+	unsigned int i = 0;
 
 	const instruction_t instructions[] = {
 		{"pall", pallOpCode},
