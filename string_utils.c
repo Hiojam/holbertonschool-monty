@@ -1,17 +1,17 @@
 #include "monty.h"
 
 /**
-<<<<<<< HEAD
+
  * split_str - Splits a string by a given delimiter
  * @str: String to be splitted
  * @delim: Delimiter to use for splitting
  * Return: An array of strings representing the split input
-=======
+
  * tokenize - splits a string and returns an array of each word of the string.
  * @line: string to tokenize
  *
  * Return: Pointer to pointer to an array of words
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
+
  */
 char **tokenize(char *line)
 {
@@ -59,7 +59,6 @@ char **tokenize(char *line)
 	return (args);
 }
 
-<<<<<<< HEAD
 /**
  * str_count_words - Count words in a string.
  * @s: String to be splitted.
@@ -86,8 +85,6 @@ int str_count_words(char *s, const char *delim)
 	free(newS);
 	return (numWords);
 }
-=======
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
 
 /**
 * free_array- Frees an array.
