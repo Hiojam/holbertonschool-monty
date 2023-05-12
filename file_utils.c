@@ -1,12 +1,11 @@
 #include "monty.h"
 
 /**
- * accessFile - Checks wether a file is accessible or not.
- * 
- * @fileName: Name of the file to be checked.
- * 
- * Return: 1 (Accessible), Exit (Error).
-*/
+* accessFile - Checks wether a file is accessible or not
+* @fileName: Name of the file to be checked.
+* Return: 1 (Accessible), Exit (Error)
+**/
+
 unsigned int accessFile(char *fileName)
 {
 	FILE *f;

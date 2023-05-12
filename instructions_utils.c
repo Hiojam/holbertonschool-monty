@@ -2,7 +2,7 @@
 
 unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack)
 {
-    unsigned int i = 0, n = (unsigned int) val;
+unsigned int i = 0, n = (unsigned int) val;
 
 	const instruction_t instructions[] = {
 		{"push", pushOpCode},
@@ -22,8 +22,8 @@ unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **
 	}
 
 	while (instructions[i].opcode != NULL)
-	{	
-		
+	{
+
 		if (strcmp(opCode, instructions[i].opcode) == 0)
 		{
 			instructions[i].f(stack, line);

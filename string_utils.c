@@ -1,11 +1,10 @@
 #include "monty.h"
 
 /**
- * split_str - Splits a string by a given delimiter.
- * @str: String to be splitted.
- * @delim: Delimiter to use for splitting.
- *
- * Return: An array of strings representing the split input.
+ * split_str - Splits a string by a given delimiter
+ * @str: String to be splitted
+ * @delim: Delimiter to use for splitting
+ * Return: An array of strings representing the split input
  */
 char **split_str(char *str, const char *delim)
 {
@@ -93,7 +92,6 @@ char **split_str(char *str, const char *delim)
  * str_count_words - Count words in a string.
  * @s: String to be splitted.
  * @delim: Delimeter.
- *
  * Return: Number of words.
 */
 int str_count_words(char *s, const char *delim)
@@ -118,9 +116,9 @@ int str_count_words(char *s, const char *delim)
 }
 
 /**
- * free_array- Frees an array.
- * @arr: Array to be freed.
-*/
+* free_array- Frees an array.
+* @arr: Array to be freed.
+**/
 void free_array(char **arr)
 {
 	int i = 0;
@@ -134,11 +132,11 @@ void free_array(char **arr)
 }
 
 /**
- * only_spaces - check for a line with only spaces
- * @line: to check
- *
- * Return: 0 or 1
- */
+* only_spaces - check for a line with only spaces
+* @line: to check
+* Return: 0 or 1
+**/
+
 int only_spaces(char *line)
 {
 	int o_spaces = 1;

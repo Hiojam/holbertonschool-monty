@@ -2,12 +2,9 @@
 
 file_t file_info;
 
-/**
- * 
-*/
 int main(int argc, char const *argv[])
 {
-    stack_t *stack = NULL;
+	stack_t *stack = NULL;
 
 	if (argc < 2)
 	{
@@ -36,7 +33,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 	file_info.f = fopen(fileName, "r");
 	char *line;
 	size_t len = 0;
-    unsigned int success = 1;
+	unsigned int success = 1;
 	int val;
 
 	file_info.n_line = 1;
@@ -59,7 +56,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
 		if (!success)
 		{
-			throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, file_info.arr[0]);
+		throwCustomError("L%d: unknown instruction %s\n", file_info.n_line, file_info.arr[0]);
 			free_all();
 			exit(EXIT_FAILURE);
 		}
