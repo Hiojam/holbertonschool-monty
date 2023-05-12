@@ -27,6 +27,12 @@ int main(int argc, char const *argv[])
 	return (0);
 }
 
+/**
+* void - Principal
+* @fileName: The name
+* @stack: free memory
+* Return: in 0
+*/
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	size_t len = 0;
