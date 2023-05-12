@@ -4,11 +4,11 @@ file_t file_info;
 
 int main(int argc, char const *argv[])
 {
-<<<<<<< HEAD
+
 	stack_t *stack = NULL;
-=======
+
     file_info.stack = NULL;
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
+
 
 	if (argc != 2)
 	{
@@ -37,13 +37,13 @@ void checkInstructions(char *fileName, stack_t **stack)
 {
 	file_info.f = fopen(fileName, "r");
 	size_t len = 0;
-<<<<<<< HEAD
+
 	unsigned int success = 1;
 	int val;
-=======
+
     unsigned int success = 1;
 	int val, nReads;
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
+
 
 	file_info.n_line = 1;
 	while ((nReads = getline(&file_info.line, &len, file_info.f)) != -1)
