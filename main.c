@@ -1,6 +1,12 @@
 #include "monty.h"
 
 file_t file_info;
+/**
+* main - Principal
+* @argc: Variable indicated number of passed arguments
+* @argv: array of character pointers contain passed arguments
+* Return: in 0
+*/
 int main(int argc, char const *argv[])
 {
 	file_info.stack = NULL;
@@ -21,11 +27,17 @@ int main(int argc, char const *argv[])
 	return (0);
 }
 
+/**
+* checkInstructions - check the instructions
+* @fileName: The name
+* @stack: free memory
+* Return: in 0
+*/
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	size_t len = 0;
 	int val, nReads, success = 1;
-	file_info.f = fopen(fileName, "r");
+file_info.f = fopen(fileName, "r");
 	file_info.n_line = 1;
 	while ((nReads = getline(&file_info.line, &len, file_info.f)) != -1)
 	{
