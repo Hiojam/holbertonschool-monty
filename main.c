@@ -4,14 +4,6 @@ file_t file_info;
 
 int main(int argc, char const *argv[])
 {
-
-
-	stack_t *stack = NULL;
-
-	file_info.stack = NULL;
-
-	file_info.stack = NULL;
-
 	file_info.stack = NULL;
 
 	if (argc != 2)
