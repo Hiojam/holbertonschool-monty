@@ -22,7 +22,9 @@ int main(int argc, char const *argv[])
 	checkInstructions(file_info.file, &file_info.stack);
 	return (0);
 }
-
+/**
+* checkInstructions - check the instructions from a text file.
+*//
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	size_t len = 0;
