@@ -6,8 +6,13 @@ int main(int argc, char const *argv[])
 {
 
 	stack_t *stack = NULL;
+<<<<<<< HEAD
 
 	file_info.stack = NULL;
+=======
+	
+    file_info.stack = NULL;
+>>>>>>> 67781d54133f62f9741975e2311235c8f5eb4d5d
 
 
 	if (argc != 2)

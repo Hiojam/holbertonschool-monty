@@ -36,8 +36,7 @@ void free_all()
 /**
  * free_dlistint - frees a dlistint_t list
  * @head: of a list
- *
- */
+ **/
 void free_stack(stack_t *head)
 {
 	stack_t *current;
@@ -49,4 +48,3 @@ void free_stack(stack_t *head)
 		free(current);
 	}
 }
-
