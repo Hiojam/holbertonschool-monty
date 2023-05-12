@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 	file_info.file = strdup(argv[1]);
 	if (!file_info.file)
 	{
-		throwCustomError("Error: malloc failed");
+		throwCustomError("Error: malloc failed\n");
 		free_all();
 		exit(EXIT_FAILURE);
 	}
@@ -37,7 +37,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 	{
 		if (nReads == -1)
 		{
-			throwCustomError("Error: malloc failed");
+			throwCustomError("Error: malloc failed\n");
 			free_all();
 			exit(EXIT_FAILURE);
 		}
