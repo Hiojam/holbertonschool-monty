@@ -11,7 +11,7 @@ void pushOpCode(stack_t **stack, int val)
 	int n = val;
 	stack_t *element = malloc(sizeof(stack_t));
 
-	if (element == NULL)
+	if (!element)
 	{
 		throwCustomError("Error: malloc failed\n");
 		free(element);

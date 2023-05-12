@@ -5,6 +5,7 @@ file_t file_info;
 int main(int argc, char const *argv[])
 {
 	file_info.stack = NULL;
+	file_info.line = NULL;
 
 	if (argc != 2)
 	{
