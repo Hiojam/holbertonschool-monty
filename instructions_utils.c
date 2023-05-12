@@ -1,7 +1,6 @@
 #include "monty.h"
 
-unsigned int ex_instruction
-(char *opCode, unsigned int line, int val, stack_t **stack)
+unsigned int ex_instruction(char *oC, unsigned int l, int v, stack_t **s)
 {
 	unsigned int i = 0;
 
@@ -15,17 +14,17 @@ unsigned int ex_instruction
 		{NULL, NULL}
 	};
 
-	if (strcmp("push", opCode) == 0)
+	if (strcmp("push", oC) == 0)
 	{
-		pushOpCode(stack, val);
+		pushOpCode(s, v);
 		return (1);
 	}
 
 	while (instructions[i].opcode != NULL)
 	{
-		if (strcmp(opCode, instructions[i].opcode) == 0)
+		if (strcmp(oC, instructions[i].opcode) == 0)
 		{
-			instructions[i].f(stack, line);
+			instructions[i].f(s, l);
 			return (1);
 		}
 		i++;
