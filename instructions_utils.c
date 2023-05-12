@@ -1,6 +1,7 @@
 #include "monty.h"
 
-unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack)
+unsigned int ex_instruction
+(char *opCode, unsigned int line, int val, stack_t **stack)
 {
 	unsigned int i = 0;
 
