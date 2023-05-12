@@ -4,7 +4,7 @@ file_t file_info;
 
 int main(int argc, char const *argv[])
 {
-<<<<<<< HEAD
+
 
 	stack_t *stack = NULL;
 
@@ -12,10 +12,8 @@ int main(int argc, char const *argv[])
 
 	file_info.stack = NULL;
 
-
-=======
 	file_info.stack = NULL;
->>>>>>> e38d641e1d8c2ae757fa0229c9def3e8b7fbbfc0
+
 	if (argc != 2)
 	{
 		throwCustomError("USAGE: monty file\n");
