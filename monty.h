@@ -88,7 +88,7 @@ int deleteStack(stack_t **head, unsigned int index);
 void clearStack();
 
 /* instruction_utils.c */
-unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack);
+unsigned int ex_instruction(char *oC, unsigned int l, int v, stack_t **s);
 int chek_push_usage(char **arr);
 int is_num(char *arr);
 
