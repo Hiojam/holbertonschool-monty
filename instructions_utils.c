@@ -31,7 +31,10 @@ int ex_instruction(char *oC, unsigned int l, int v, stack_t **s)
 	}
 	return (0);
 }
-
+/**
+* chek_push_usage - Command checker
+* @arr: array arrangement
+*/
 int chek_push_usage(char **arr)
 {
 	if (!arr[1])
@@ -44,7 +47,10 @@ int chek_push_usage(char **arr)
 	}
 	return (0);
 }
-
+/**
+* is_num - receives a string of characters
+* @arr: array arrangement
+*/
 int is_num(char *arr)
 {
 	int i;
