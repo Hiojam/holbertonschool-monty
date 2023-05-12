@@ -2,11 +2,10 @@
 
 unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack)
 {
-<<<<<<< HEAD
+
 unsigned int i = 0, n = (unsigned int) val;
-=======
+
     unsigned int i = 0;
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
 
 	const instruction_t instructions[] = {
 		{"pall", pallOpCode},
@@ -68,6 +67,6 @@ int is_num(char *arr)
 			return (0);
 		}
 	}
-	return(1);
+	return (1);
 }
 

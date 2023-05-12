@@ -32,8 +32,6 @@ void free_all()
 		free(file_info.line);
 	fclose(file_info.f);
 }
-<<<<<<< HEAD
-=======
 
 /**
  * free_dlistint - frees a dlistint_t list
@@ -51,4 +49,4 @@ void free_stack(stack_t *head)
 		free(current);
 	}
 }
->>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
+
