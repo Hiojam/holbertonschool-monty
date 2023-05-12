@@ -32,7 +32,7 @@ void free_all(void)
 }
 
 /**
- * free_stack - frees a dlistint_t list
+ * free_stack - frees a stack_t
  * @head: of a list
  **/
 void free_stack(stack_t *head)
