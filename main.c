@@ -26,7 +26,9 @@ int main(int argc, char const *argv[])
 
 /**
 * checkInstructions - check the instructions from a text file.
-*/
+* char - character
+* stack - free memory
+**/
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	size_t len = 1024;
