@@ -46,6 +46,7 @@ int ex_instruction(char *oC, unsigned int l, int v, stack_t **s)
  * check_push_usage - Checks wether the push opCode can be used.
  *
  * @arr: The array containing args.
+ * Return: 0 on Success, -1 on Error.
 */
 int check_push_usage(char **arr)
 {

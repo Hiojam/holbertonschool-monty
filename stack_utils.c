@@ -18,7 +18,7 @@ void clearStack(void)
 
 /**
  * deleteStack - removes an item from a doubly linked stack
- * 
+ *
  * @head: The stack head.
  * @index: The position where you want to delete an item.
  * Return: 1 on Success, -1 on Error.
