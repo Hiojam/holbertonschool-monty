@@ -29,8 +29,17 @@ int main(int argc, char const *argv[])
 */
 void checkInstructions(char *fileName, stack_t **stack)
 {
-	size_t len = 0;
+	size_t len = 1024;
 	int val, nReads, success = 1;
+
+	file_info.line = malloc(sizeof(char) * len);
+
+	if (!file_info.line)
+	{
+		throwCustomError("Error: malloc failed\n");
+		free_all();
+		exit(EXIT_FAILURE);
+	}
 
 	file_info.f = fopen(fileName, "r");
 	file_info.n_line = 1;
