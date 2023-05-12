@@ -89,7 +89,7 @@ void clearStack();
 
 /* instruction_utils.c */
 int ex_instruction(char *oC, unsigned int l, int v, stack_t **s);
-int chek_push_usage(char **arr);
+int check_push_usage(char **arr);
 int is_num(char *arr);
 
 /* string_utils.c */

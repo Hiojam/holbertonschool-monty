@@ -20,7 +20,7 @@ void pushOpCode(stack_t **stack, int val)
 	}
 	if (n == 0)
 	{
-		if (chek_push_usage(file_info.arr) != 0)
+		if (check_push_usage(file_info.arr) != 0)
 		{
 			throwCustomError("L%d: usage: push integer\n", file_info.n_line);
 			free(element);

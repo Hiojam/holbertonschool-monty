@@ -1,6 +1,7 @@
 #include "monty.h"
 
 file_t file_info;
+
 /**
 * main - Principal
 * @argc: Variable indicated number of passed arguments

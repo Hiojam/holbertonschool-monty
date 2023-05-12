@@ -21,6 +21,7 @@ void clearStack(void)
  * 
  * @head: The stack head.
  * @index: The position where you want to delete an item.
+ * Return: 1 on Success, -1 on Error.
 */
 int deleteStack(stack_t **head, unsigned int index)
 {
