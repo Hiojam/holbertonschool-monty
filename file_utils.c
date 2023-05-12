@@ -21,7 +21,6 @@ unsigned int accessFile(char *fileName)
 	if (!f)
 	{
 		throwCustomError("Error: Can't open file %s\n", fileName);
-
 		free(fileName);
 		exit(EXIT_FAILURE);
 	}

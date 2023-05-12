@@ -4,9 +4,13 @@ file_t file_info;
 
 int main(int argc, char const *argv[])
 {
+<<<<<<< HEAD
 	stack_t *stack = NULL;
+=======
+    file_info.stack = NULL;
+>>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
 
-	if (argc < 2)
+	if (argc != 2)
 	{
 		throwCustomError("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
@@ -17,6 +21,7 @@ int main(int argc, char const *argv[])
 	if (!file_info.file)
 	{
 		throwCustomError("Error: malloc failed");
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -24,34 +29,44 @@ int main(int argc, char const *argv[])
 	accessFile(file_info.file);
 
 	/* Check instructions of the file. */
-	checkInstructions(file_info.file, &stack);
+	checkInstructions(file_info.file, &file_info.stack);
 	return (0);
 }
 
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	file_info.f = fopen(fileName, "r");
-	char *line;
 	size_t len = 0;
+<<<<<<< HEAD
 	unsigned int success = 1;
 	int val;
+=======
+    unsigned int success = 1;
+	int val, nReads;
+>>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
 
 	file_info.n_line = 1;
-	while ((getline(&line, &len, file_info.f)) != -1)
+	while ((nReads = getline(&file_info.line, &len, file_info.f)) != -1)
 	{
+		if (nReads == -1)
+		{
+			throwCustomError("Error: malloc failed");
+			free_all();
+			exit(EXIT_FAILURE);
+		}
 		val = 0;
-		if (only_spaces(line) == 1)
+		if (only_spaces(file_info.line) == 1)
 		{
 			file_info.n_line++;
 			continue;
 		}
-		file_info.arr = split_str(line, " \n\t");
+		file_info.arr = tokenize(file_info.line);
 		if (file_info.arr == NULL)
 		{
 			file_info.n_line++;
 			continue;
 		}
-		if (file_info.arr[1])
+		if (file_info.arr[1] && is_num(file_info.arr[1]))
 			val = atoi(file_info.arr[1]);
 		success = ex_instruction(file_info.arr[0], file_info.n_line, val, stack);
 		if (!success)
@@ -61,8 +76,8 @@ void checkInstructions(char *fileName, stack_t **stack)
 			exit(EXIT_FAILURE);
 		}
 		free_array(file_info.arr);
+		file_info.arr = NULL;
 		file_info.n_line++;
 	}
-	fclose(file_info.f);
-	free(line);
+	free_all();
 }

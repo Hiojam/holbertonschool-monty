@@ -22,9 +22,33 @@ void throwCustomError(char *error, ...)
 
 void free_all()
 {
+	if (file_info.stack)
+		free_stack(file_info.stack);
+	if (file_info.file)
+		free(file_info.file);
 	if (file_info.arr)
 		free_array(file_info.arr);
 	if (file_info.line)
 		free(file_info.line);
 	fclose(file_info.f);
 }
+<<<<<<< HEAD
+=======
+
+/**
+ * free_dlistint - frees a dlistint_t list
+ * @head: of a list
+ *
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *current;
+
+	while (head != NULL)
+	{
+		current = head;
+		head = head->next;
+		free(current);
+	}
+}
+>>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f

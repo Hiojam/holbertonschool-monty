@@ -1,93 +1,65 @@
 #include "monty.h"
 
 /**
+<<<<<<< HEAD
  * split_str - Splits a string by a given delimiter
  * @str: String to be splitted
  * @delim: Delimiter to use for splitting
  * Return: An array of strings representing the split input
+=======
+ * tokenize - splits a string and returns an array of each word of the string.
+ * @line: string to tokenize
+ *
+ * Return: Pointer to pointer to an array of words
+>>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
  */
-char **split_str(char *str, const char *delim)
+char **tokenize(char *line)
 {
-	char *tok, *copy, *comment;
-	char **array;
-	unsigned int len = 0, count = 0, i = 0;
-	int numWords = str_count_words(str, delim);
+	char *line_cpy = NULL, *token = NULL, *delim = " \t\n";
+	char **args = NULL;
+	int n_args = 0, i = 0;
 
-	/* Make a copy of the input string */
-	copy = strdup(str);
-	if (copy == NULL)
-		return (NULL);
-
-	for (i = 0; copy[i]; i++)
+	line_cpy = strdup(line);
+	if (!line_cpy)
 	{
-		if (copy[i] == ' ')
-			continue;
-		count = 1;
-		break;
+		throwCustomError("Error: malloc failed\n");
+		free_all();
+		exit(EXIT_FAILURE);
 	}
-	if (count == 0)
+	token = strtok(line_cpy, delim);
+	while (token)
 	{
-		free(copy);
-		return (NULL);
+		n_args++;
+		token = strtok(NULL, delim);
 	}
-	count = 0;
-
-	array = (char **) malloc((numWords + 1) * sizeof(char *));
-	if (array == NULL)
+	free(line_cpy);
+	n_args++;
+	args = malloc(sizeof(char *) * n_args);
+	if (!args)
 	{
-		free(copy);
-		return (NULL);
+		throwCustomError("Error: malloc failed\n");
+		free_all();
+		exit(EXIT_FAILURE);
 	}
-
-	/* Check if the string starts with a colon */
-	if (copy[0] == ':')
+	token = strtok(line, delim);
+	for (i = 0; i < n_args - 1 && token != NULL; i++)
 	{
-		array[count] = strdup("");
-		if (array[count] == NULL)
+		args[i] = strdup(token);
+		if (!args[i])
 		{
-			free_array(array);
-			free(copy);
-			return (NULL);
+			while (--i >= 0)
+				free(args[i]);
+			throwCustomError("Error: malloc failed\n");
+			free_all();
+			exit(EXIT_FAILURE);
 		}
-		count++;
+		token = strtok(NULL, delim);
 	}
-
-	tok = strtok_r(copy, delim, &comment);
-
-	for (i = 0; tok[i]; i++)
-	{
-		if (tok[i] == ' ')
-		{
-			memmove(&tok[i], &tok[i + 1], strlen(tok) - i);
-		}
-		else
-			break;
-	}
-
-	while (tok != NULL)
-	{
-		len = strlen(tok);
-
-		array[count] = (char *) malloc((len + 1) * sizeof(char));
-		if (array[count] == NULL)
-		{
-			free_array(array);
-			free(copy);
-			return (NULL);
-		}
-
-		for (i = 0; i < len; i++)
-			array[count][i] = tok[i];
-
-	    array[count][i] = '\0';
-		count++;
-		tok = strtok_r(NULL, delim, &comment);
-	}
-	array[count] = NULL;
-	free(copy);
-	return (array);
+	args[i] = NULL;
+	return (args);
 }
 
+<<<<<<< HEAD
 /**
  * str_count_words - Count words in a string.
  * @s: String to be splitted.
@@ -114,6 +86,8 @@ int str_count_words(char *s, const char *delim)
 	free(newS);
 	return (numWords);
 }
+=======
+>>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
 
 /**
 * free_array- Frees an array.

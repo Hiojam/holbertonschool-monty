@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <errno.h>
 #include <string.h>
+#include <ctype.h>
 
 /* ----- Data Structures ----- */
 
@@ -55,6 +56,7 @@ typedef struct file_s
 	unsigned int n_line;
 	char **arr;
 	char *line;
+	stack_t *stack;
 	
 } file_t;
 
@@ -69,12 +71,13 @@ void checkInstructions(char *fileName, stack_t **s);
 /* errors.c */
 void throwCustomError(char *error, ...);
 void free_all();
+void free_stack(stack_t *head);
 
 /* file_utils.c */
 unsigned int accessFile(char *fileName);
 
 /* opcodes */
-void pushOpCode(stack_t **stack, unsigned int line_number);
+void pushOpCode(stack_t **stack, int val);
 void pallOpCode(stack_t **stack, unsigned int line_number);
 void pintOpCode(stack_t **stack, unsigned int line_number);
 void popOpCode(stack_t **stack, unsigned int line_number);
@@ -84,17 +87,16 @@ void nopOpCode(stack_t **stack, unsigned int line_number);
 
 /* stack_utils.c */
 int deleteStack(stack_t **head, unsigned int index);
-stack_t *getStack(unsigned int position);
 void clearStack();
 
 /* instruction_utils.c */
 unsigned int ex_instruction(char *opCode, unsigned int line, int val, stack_t **stack);
 int chek_push_usage(char **arr);
+int is_num(char *arr);
 
 /* string_utils.c */
-char **split_str(char *str, const char *delim);
-int str_count_words(char *s, const char *delim);
 void free_array(char **arr);
 int only_spaces(char *line);
+char **tokenize(char *line);
 
 #endif
