@@ -1,34 +1,14 @@
 #include "monty.h"
 
 /**
-<<<<<<< HEAD
-  <<<<<<< HEAD
-=======
-
->>>>>>> 67781d54133f62f9741975e2311235c8f5eb4d5d
- * split_str - Splits a string by a given delimiter
- * @str: String to be splitted
- * @delim: Delimiter to use for splitting
- * Return: An array of strings representing the split input
-<<<<<<< HEAD
- =======
-=======
-
->>>>>>> 67781d54133f62f9741975e2311235c8f5eb4d5d
  * tokenize - splits a string and returns an array of each word of the string.
  * @line: string to tokenize
  *
- * Return: Pointer to pointer to an array of words
-<<<<<<< HEAD
- >>>>>>> 5139bfc65db652bf3b2264fd29b0462fc3640e1f
-=======
-
->>>>>>> 67781d54133f62f9741975e2311235c8f5eb4d5d
+ * Return: An array of strings representing the split input
  */
 char **tokenize(char *line)
 {
-	char *line_cpy = NULL, *token = NULL, *delim = " \t\n";
-	char **args = NULL;
+	char *line_cpy = NULL, *token = NULL, *delim = " \t\n", **args = NULL;
 	int n_args = 0, i = 0;
 
 	line_cpy = strdup(line);
@@ -72,33 +52,6 @@ char **tokenize(char *line)
 }
 
 /**
- * str_count_words - Count words in a string.
- * @s: String to be splitted.
- * @delim: Delimeter.
- * Return: Number of words.
- */
-int str_count_words(char *s, const char *delim)
-{
-	char *tok, *comment;
-	int numWords = 0;
-	char *newS = strdup(s);
-
-	if (newS == NULL)
-		return (0);
-
-	tok = strtok_r(newS, delim, &comment);         /* Get first token */
-
-	while (tok != NULL)               /* Check for delimiters */
-	{
-		numWords++;
-		tok = strtok_r(NULL, delim, &comment);    /* Go through other tokens */
-	}
-
-	free(newS);
-	return (numWords);
-}
-
-/**
  * free_array- Frees an array.
  * @arr: Array to be freed.
  **/
@@ -119,7 +72,6 @@ void free_array(char **arr)
  * @line: to check
  * Return: 0 or 1
  **/
-
 int only_spaces(char *line)
 {
 	int o_spaces = 1;
