@@ -2,10 +2,10 @@
 
 file_t file_info;
 /**
-* main - the principal function
-* @argc: Nothing more
-* @argv: More
-* Return: Nothing
+* main - Principal 
+* @argc: Variable indicated number of passed arguments 
+* @argv: array of character pointers contain passed arguments
+* Return: in 0
 */
 int main(int argc, char const *argv[])
 {
