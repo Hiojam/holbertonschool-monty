@@ -53,7 +53,6 @@ void pallOpCode(stack_t **stack, unsigned int line_number)
 	stack_t *aux = (*stack);
 
 	(void) line_number;
-	
 	while (aux)
 	{
 		printf("%d\n", aux->n);
