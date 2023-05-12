@@ -20,27 +20,32 @@ int main(int argc, char const *argv[])
 	checkInstructions(file_info.file, &file_info.stack);
 	return (0);
 }
+
+/**
+* checkInstructions - check the instructions from a text file.
+*//
 void checkInstructions(char *fileName, stack_t **stack)
 {
 	size_t len = 0;
-	unsigned int success = 1;
-	int val, nReads;
 	int val, nReads, success = 1;
-
 	file_info.f = fopen(fileName, "r");
 	file_info.n_line = 1;
-void checkInstructions(char *fileName, stack_t **stack)
+	while ((nReads = getline(&file_info.line, &len, file_info.f)) != -1)
+	{
+		if (nReads == -1)
+		{
+			throwCustomError("Error: malloc failed");
+			free_all();
+			exit(EXIT_FAILURE);
 		}
 		val = 0;
 		if (only_spaces(file_info.line) == 1)
-			file_info.n_line++, continue;
 		{
 			file_info.n_line++;
 			continue;
 		}
 		file_info.arr = tokenize(file_info.line);
 		if (file_info.arr == NULL)
-			file_info.n_line++, continue;
 		{
 			file_info.n_line++;
 			continue;
