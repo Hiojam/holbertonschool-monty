@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void clearStack()
+void clearStack(void)
 {
 	stack_t **head = NULL;
 	stack_t *tmp;
