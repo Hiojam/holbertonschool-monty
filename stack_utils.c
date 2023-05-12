@@ -1,5 +1,8 @@
 #include "monty.h"
 
+/**
+* clearStack - frees memory to each allocated element
+**/
 void clearStack(void)
 {
 	stack_t **head = NULL;
@@ -13,6 +16,9 @@ void clearStack(void)
 	}
 }
 
+/**
+* deleteStack - removes an item from a doubly linked stack
+**/
 int deleteStack(stack_t **head, unsigned int index)
 {
 	stack_t *tmp;
