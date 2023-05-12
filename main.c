@@ -27,6 +27,7 @@ void checkInstructions(char *fileName, stack_t **stack)
 	int val, nReads, success = 1;
 	file_info.f = fopen(fileName, "r");
 	file_info.n_line = 1;
+	
 	while ((nReads = getline(&file_info.line, &len, file_info.f)) != -1)
 	{
 		if (nReads == -1)
